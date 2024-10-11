@@ -33,6 +33,14 @@ RUN chmod +x /usr/local/bin/wait-for-it \
         redis \
         xdebug \
         xsl \
+    && git clone https://github.com/Imagick/imagick.git --depth 1 /tmp/imagick \
+        && cd /tmp/imagick \
+        && phpize \
+        && ./configure \
+        && make \
+        && make install \
+        && rm -rf /tmp/imagick \
+        && docker-php-ext-enable imagick \
     && curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - \
     && apt-get install -y nodejs \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
