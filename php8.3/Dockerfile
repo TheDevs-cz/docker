@@ -17,6 +17,7 @@ RUN chmod +x /usr/local/bin/wait-for-it \
         gnupg \
         wget \
         nano \
+        libmagickwand-dev \
     && install-php-extensions \
         @composer \
         bcmath \
