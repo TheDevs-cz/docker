@@ -18,7 +18,6 @@ RUN chmod +x /usr/local/bin/wait-for-it \
         wget \
         nano \
         libmagickwand-dev \
-        wkhtmltopdf \
     && install-php-extensions \
         @composer \
         bcmath \
