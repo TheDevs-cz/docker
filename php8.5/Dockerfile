@@ -16,6 +16,7 @@ ENV COMPOSER_ALLOW_SUPERUSER=1 \
     FRANKENPHP_CONFIG=""
 
 COPY wait-for-it.sh /usr/local/bin/wait-for-it
+COPY bin/docker-entrypoint.sh /usr/local/bin/docker-entrypoint
 
 RUN chmod +x /usr/local/bin/wait-for-it /usr/local/bin/docker-entrypoint \
     && mkdir -p /.composer /docker-entrypoint.d /etc/frankenphp/Caddyfile.d /data \
@@ -51,7 +52,6 @@ RUN chmod +x /usr/local/bin/wait-for-it /usr/local/bin/docker-entrypoint \
     && apt-get install -y nodejs \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-COPY bin/docker-entrypoint.sh /usr/local/bin/docker-entrypoint
 COPY Caddyfile /etc/caddy/Caddyfile
 COPY php.ini /usr/local/etc/php/conf.d/99-app.ini
 
