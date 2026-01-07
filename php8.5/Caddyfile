@@ -1,0 +1,25 @@
+{
+    servers {
+        trusted_proxies static private_ranges
+        max_header_size 128kb
+        protocols h1 h2 h2c h3
+        enable_full_duplex
+    }
+
+    log {
+        format console
+    }
+
+    frankenphp {
+        {$FRANKENPHP_CONFIG}
+    }
+
+    {$CADDY_GLOBAL_OPTIONS}
+}
+
+{$SERVER_NAME::80} {
+    root * /app/public
+    encode zstd gzip
+
+    php_server
+}
