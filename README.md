@@ -70,3 +70,20 @@ services:
 ### PHP Extensions
 
 bcmath, intl, pcntl, zip, uuid, pdo_mysql, pdo_pgsql, opcache, apcu, gd, exif, redis, xdebug, xsl, imagick, excimer
+
+## php8.5-wboost
+
+Extended PHP 8.5 image with Inkscape for PDF/SVG processing.
+
+### Features
+
+- Everything from `ghcr.io/thedevs-cz/php:8.5`
+- Inkscape
+
+### Usage
+
+```yaml
+services:
+  app:
+    image: ghcr.io/thedevs-cz/php:8.5-wboost
+```
