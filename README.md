@@ -87,3 +87,20 @@ services:
   app:
     image: ghcr.io/thedevs-cz/php:8.5-wboost
 ```
+
+## php8.5-fajnesklady
+
+Extended PHP 8.5 image with LibreOffice for document processing.
+
+### Features
+
+- Everything from `ghcr.io/thedevs-cz/php:8.5`
+- LibreOffice
+
+### Usage
+
+```yaml
+services:
+  app:
+    image: ghcr.io/thedevs-cz/php:8.5-fajnesklady
+```
