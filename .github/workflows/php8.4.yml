@@ -4,8 +4,6 @@ permissions:
     packages: write
 
 on:
-    schedule:
-        - cron: '0 5 * * *'
     push:
         branches:
             - 'main'
