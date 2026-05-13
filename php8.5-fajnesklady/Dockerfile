@@ -3,6 +3,8 @@ FROM ghcr.io/thedevs-cz/php:8.5
 ARG TARGETARCH
 ARG TAILWIND_VERSION=v4.1.11
 
+ENV TAILWIND_BINARY=/usr/local/bin/tailwindcss
+
 RUN rm -f /etc/apt/sources.list.d/nodesource.list \
     && apt-get update && apt-get install -y \
         libreoffice \
