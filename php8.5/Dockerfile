@@ -50,6 +50,7 @@ RUN chmod +x /usr/local/bin/wait-for-it /usr/local/bin/docker-entrypoint \
         excimer \
     && curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - \
     && apt-get install -y nodejs \
+    && curl -sL https://sentry.io/get-cli/ | bash \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 COPY Caddyfile /etc/caddy/Caddyfile
