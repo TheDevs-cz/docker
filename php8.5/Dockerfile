@@ -20,8 +20,10 @@ COPY bin/docker-entrypoint.sh /usr/local/bin/docker-entrypoint
 
 RUN chmod +x /usr/local/bin/wait-for-it /usr/local/bin/docker-entrypoint \
     && mkdir -p /.composer /docker-entrypoint.d /etc/frankenphp/Caddyfile.d /data \
-    && apt-get update && apt-get install -y \
+    && apt-get update && apt-get install -y --no-install-recommends \
         git \
+        openssh-client \
+        less \
         zip \
         ca-certificates \
         curl \
@@ -29,7 +31,15 @@ RUN chmod +x /usr/local/bin/wait-for-it /usr/local/bin/docker-entrypoint \
         gnupg \
         wget \
         nano \
-        libmagickwand-dev \
+        ghostscript \
+        fonts-dejavu-core \
+        fonts-dejavu-mono \
+        fonts-droid-fallback \
+        fonts-noto-mono \
+        libheif-plugin-x265 \
+        libjxr-tools \
+        librsvg2-common \
+        libwmf-0.2-7 \
     && install-php-extensions \
         @composer \
         bcmath \
@@ -49,7 +59,7 @@ RUN chmod +x /usr/local/bin/wait-for-it /usr/local/bin/docker-entrypoint \
         imagick \
         excimer \
     && curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - \
-    && apt-get install -y nodejs \
+    && apt-get install -y --no-install-recommends nodejs \
     && curl -sL https://sentry.io/get-cli/ | bash \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 

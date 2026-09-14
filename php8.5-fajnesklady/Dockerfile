@@ -5,9 +5,26 @@ ARG TAILWIND_VERSION=v4.1.11
 
 ENV TAILWIND_BINARY=/usr/local/bin/tailwindcss
 
+# Headless DOCX -> PDF (soffice) and PDF downgrade (gs) only. Recommends are
+# skipped (Java, Calc/Impress/Draw/Base, Mesa/LLVM, speech data), so the fonts
+# documents fall back to are listed explicitly: metric-compatible substitutes
+# for MS core fonts (Liberation, Carlito, Caladea) plus the families LibreOffice
+# used to pull in, keeping rendered PDFs identical.
 RUN rm -f /etc/apt/sources.list.d/nodesource.list \
-    && apt-get update && apt-get install -y \
-        libreoffice \
+    && apt-get update && apt-get install -y --no-install-recommends \
+        libreoffice-writer-nogui \
+        ghostscript \
+        fonts-crosextra-caladea \
+        fonts-crosextra-carlito \
+        fonts-dejavu \
+        fonts-dejavu-extra \
+        fonts-liberation \
+        fonts-liberation-sans-narrow \
+        fonts-linuxlibertine \
+        fonts-noto-core \
+        fonts-noto-ui-core \
+        fonts-sil-gentium \
+        fonts-sil-gentium-basic \
     && case "${TARGETARCH}" in \
          amd64) TW_ARCH="x64" ;; \
          arm64) TW_ARCH="arm64" ;; \
